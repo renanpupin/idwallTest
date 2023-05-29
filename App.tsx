@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from "react";
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -25,12 +25,28 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import IdwallSdk, {
+  IdwallDocumentType,
+  IdwallDocumentSide,
+  IdwallLoggingLevel,
+} from '@idwall/react-native-idwall-sdk';
+
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
+const ID_WALL_AUTH_KEY= ""
+const ID_WALL_PUBLIC_KEY= ""
+
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    IdwallSdk.initialize(ID_WALL_AUTH_KEY);
+    if (IdwallSdk.ios) {
+      IdwallSdk.ios.setupPublicKeys([ID_WALL_PUBLIC_KEY]);
+    }
+  }, [])
   return (
     <View style={styles.sectionContainer}>
       <Text
