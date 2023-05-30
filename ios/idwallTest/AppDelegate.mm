@@ -2,6 +2,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <IDwallToolkit/IDwallToolkit.h>
+#import <IDwallToolkit/IDwallToolkit-Swift.h>
 #import "CustomColors.h"
 
 @implementation AppDelegate
