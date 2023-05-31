@@ -1,21 +1,20 @@
-#import "AppDelegate.h"
-
-#import <React/RCTBundleURLProvider.h>
 #import <IDwallToolkit/IDwallToolkit.h>
 #import <IDwallToolkit/IDwallToolkit-Swift.h>
-#import "CustomColors.h"
+#import "CustomizedColors.h"
+
+#import "AppDelegate.h"
+#import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [[IDwallToolkitSettings sharedInstance] setColorScheme:[[CustomizedColors alloc] init]];
-  
   self.moduleName = @"idwallTest";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   
+  [[IDwallToolkitSettings sharedInstance] setColorScheme:[[CustomizedColors alloc] init]];
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
